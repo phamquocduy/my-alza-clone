@@ -21,12 +21,13 @@ const BestBuySection = ({ products }) => {
           breakpoints={{
             640: { slidesPerView: 2, spaceBetween: 8 },
             768: { slidesPerView: 3, spaceBetween: 8 },
-            1024: { slidesPerView: 5, spaceBetween: 8 },
+            1024: { slidesPerView: 4, spaceBetween: 8 },
+            1280: { slidesPerView: 5, spaceBetween: 8 },
           }}
         >
           {products.map((product) => (
             <SwiperSlide key={product.id} className="flex flex-col items-center">
-              <div key={product.id} className="relative bg-white flex flex-col overflow-hidden pb-2 ">
+              <div key={product.id} className="relative bg-white flex flex-col overflow-hidden pb-2">
                 <a
                   href={product.url}
                   target="_blank"
@@ -104,9 +105,9 @@ const BestBuySection = ({ products }) => {
                     )}
                   >
                     <div>
-                      <div className="text-red-500 text-lg font-semibold">{product.priceInfo.priceWithVat}</div>
+                      <div className="text-red-500 text-lg font-semibold">{product.priceInfo.priceWithVat},-</div>
                       <div className="text-xs">
-                        bez DPH <span className="font-bold">{product.priceInfo.priceWithoutVat}</span>
+                        bez DPH <span className="font-bold">{product.priceInfo.priceWithoutVat},-</span>
                       </div>
                     </div>
                   </div>

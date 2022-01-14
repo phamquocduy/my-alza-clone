@@ -6,3 +6,14 @@ html,
 body {
   height: 100%;
 }
+
+.swiper-pagination-bullet-active {
+  /* sky-500 */
+  background-color: #0ea5e9 !important;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  /* sky-500 */
+  color: #0ea5e9 !important;
+}

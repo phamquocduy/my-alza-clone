@@ -22,7 +22,7 @@ const ProductList = ({ products }) => {
         <select
           id="tabs"
           name="tabs"
-          className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-teal-500 focus:border-teal-500 sm:text-sm rounded-md"
+          className="block w-full pl-3 pr-10 py-2 text-base ring-sky-500 border-sky-500 focus:ring-sky-500 focus:border-sky-500 sm:text-sm rounded-md"
           defaultValue={productTabs.find((tab) => tab.current).label}
         >
           {productTabs.map((tab) => (
@@ -40,7 +40,7 @@ const ProductList = ({ products }) => {
                 key={tab.name}
                 className={classNames(
                   tab.current
-                    ? "border-teal-500 text-teal-600"
+                    ? "border-sky-500 text-sky-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
                   "whitespace-nowrap py-4 px-1 border-b-2 font-semibold transition hover:cursor-pointer"
                 )}
@@ -56,7 +56,7 @@ const ProductList = ({ products }) => {
 
       {/* tabs content */}
       <div className="mt-6 max-w-2xl lg:max-w-7xl mx-auto bg-gray-100">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[1px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[1px]">
           {products.map((product) => (
             <div key={product.id} className="relative bg-white flex flex-col overflow-hidden p-2">
               <a
@@ -135,9 +135,9 @@ const ProductList = ({ products }) => {
                   )}
                 >
                   <div>
-                    <div className="text-red-500 text-lg font-semibold">{product.priceInfo.priceWithVat}</div>
+                    <div className="text-red-500 text-lg font-semibold">{product.priceInfo.priceWithVat},-</div>
                     <div className="text-xs">
-                      bez DPH <span className="font-bold">{product.priceInfo.priceWithoutVat}</span>
+                      bez DPH <span className="font-bold">{product.priceInfo.priceWithoutVat},-</span>
                     </div>
                   </div>
 
@@ -147,7 +147,7 @@ const ProductList = ({ products }) => {
 
                 <div className="h-10 flex flex-col justify-center items-center text-green-600">
                   <div className="text-lg font-bold">Můžete mít zítra od 8:00</div>
-                  <div className="text-sm font-light">{product.avail}</div>
+                  <div className="text-sm">{product.avail}</div>
                 </div>
               </div>
             </div>

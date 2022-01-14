@@ -20,7 +20,7 @@ const Index = ({ productData }) => {
         <Breadcrumb />
       </div>
 
-      <main className="relative z-0 pt-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white">
+      <main className="relative pt-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white">
         <ContentHeader />
         <CategoryList />
         <BestBuySection products={productData} />
