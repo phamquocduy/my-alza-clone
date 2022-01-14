@@ -17,3 +17,11 @@ body {
   /* sky-500 */
   color: #0ea5e9 !important;
 }
+
+.swiper-button-next {
+  margin-right: -0.75rem !important;
+}
+
+.swiper-button-prev {
+  margin-left: -0.75rem !important;
+}
