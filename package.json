@@ -9,17 +9,22 @@
     "prettify": "npx prettier --write ."
   },
   "dependencies": {
+    "@headlessui/react": "1.4.2",
+    "@heroicons/react": "1.0.5",
+    "@tailwindcss/aspect-ratio": "0.4.0",
+    "@tailwindcss/forms": "0.4.0",
     "next": "12.0.8",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "swiper": "7.4.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
+    "autoprefixer": "10.4.2",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.8",
-    "eslint-config-prettier": "^8.3.0",
-    "postcss": "^8.4.5",
+    "eslint-config-prettier": "8.3.0",
+    "postcss": "8.4.5",
     "prettier": "2.5.1",
-    "tailwindcss": "^3.0.13"
+    "tailwindcss": "3.0.13"
   }
 }
