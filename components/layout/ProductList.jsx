@@ -15,8 +15,6 @@ const tabs = [
 const ProductList = ({ products }) => {
   const [productTabs, setTabs] = useState(tabs);
 
-  // products = products.slice(0, 2);
-
   return (
     <div>
       {/* tabs header - mobile */}
@@ -44,7 +42,7 @@ const ProductList = ({ products }) => {
                   tab.current
                     ? "border-teal-500 text-teal-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
-                  "whitespace-nowrap py-4 px-1 border-b-2 font-normal transition hover:cursor-pointer"
+                  "whitespace-nowrap py-4 px-1 border-b-2 font-semibold transition hover:cursor-pointer"
                 )}
                 aria-current={tab.current ? "page" : undefined}
                 onClick={() => setTabs(productTabs.map((item) => ({ ...item, current: item.name === tab.name })))}
@@ -108,8 +106,8 @@ const ProductList = ({ products }) => {
                 <p className="ml-3 text-sm hover:underline text-gray-700">{product.rating}x</p>
               </div>
 
-              <div className="flex-1 px-4 py-2 space-y-2 flex flex-col">
-                <h3 className="text-sm font-medium text-gray-900">
+              <div className="px-4 py-2 space-y-2 flex-1 flex flex-col">
+                <h3 className="text-sm font-medium">
                   <a
                     className="text-sky-900 font-bold hover:underline"
                     href={product.url}
@@ -133,7 +131,7 @@ const ProductList = ({ products }) => {
                 <div
                   className={classNames(
                     product.order && product.order > 20 ? "bg-yellow-200" : "bg-transparent", // random rule
-                    "bg-yellow-200 h-20 flex flex-row justify-between items-center px-2"
+                    "h-16 flex flex-row justify-between items-center px-2"
                   )}
                 >
                   <div>
