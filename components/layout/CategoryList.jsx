@@ -27,7 +27,7 @@ const CategoryList = () => {
 
               {/* text */}
               <div className="flex items-center">
-                <p className="text-gray-900">{item.label}</p>
+                <p className="text-sky-900 font-semibold">{item.label}</p>
               </div>
             </li>
           );
