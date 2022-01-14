@@ -4,14 +4,13 @@ import Breadcrumb from "../components/layout/Breadcrumb";
 import ContentHeader from "../components/layout/ContentHeader";
 import CategoryList from "../components/layout/CategoryList";
 import BestBuySection from "../components/layout/BestBuySection";
-
 import ProductList from "../components/layout/ProductList";
 
 const Index = ({ productData }) => {
   return (
     <div className="bg-gradient-to-b from-white via-blue-200 to-blue-200">
       <Head>
-        <title>Alza</title>
+        <title>Alza clone</title>
         <meta name="description" content="My Alza.cz clone" />
         <link rel="icon" href="/favicon-alza.ico" />
       </Head>

@@ -1,12 +1,16 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, Pagination } from "swiper";
+import dynamic from "next/dynamic";
+import { Navigation, Pagination } from "swiper";
+import { SwiperSlide } from "swiper/react";
+
 import { StarIcon } from "@heroicons/react/solid";
 import { HeartIcon, ScaleIcon } from "@heroicons/react/outline";
 
-import classNames from "../../utils/classNames";
+// turn-off ssr to fix hydration error caused by Swiper
+const Swiper = dynamic(() => import("swiper/react").then((mod) => mod.Swiper), {
+  ssr: false,
+});
 
-// install Swiper modules
-SwiperCore.use([Navigation, Pagination]);
+import classNames from "../../utils/classNames";
 
 const BestBuySection = ({ products }) => {
   return (
@@ -15,6 +19,7 @@ const BestBuySection = ({ products }) => {
 
       <div className="mt-6 flex">
         <Swiper
+          modules={[Navigation, Pagination]}
           slidesPerView={1}
           navigation={true}
           pagination={{ clickable: true }}
@@ -67,7 +72,7 @@ const BestBuySection = ({ products }) => {
                     <div className="text-left">
                       <button
                         type="button"
-                        className="inline-flex items-center p-1 gap-2 border border-transparent rounded-full shadow-sm focus:outline-none focus:ring-0"
+                        className="inline-flex items-center p-1 gap-2 border border-transparent rounded-full focus:outline-none focus:ring-0"
                       >
                         <HeartIcon className="h-5 w-5 text-red-200 hover:text-red-500" aria-hidden="true" />
                         <ScaleIcon className="h-5 w-5 text-sky-200 hover:text-sky-500" aria-hidden="true" />
