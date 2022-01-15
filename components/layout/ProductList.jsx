@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { StarIcon } from "@heroicons/react/solid";
+import { Fragment, useState } from "react";
+import { Listbox, Transition } from "@headlessui/react";
+import { StarIcon, CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import { HeartIcon, ShareIcon } from "@heroicons/react/outline";
 
 import classNames from "../../utils/classNames";
@@ -7,46 +8,80 @@ import classNames from "../../utils/classNames";
 import DropdownButton from "../bricks/DropdownButton";
 
 const tabs = [
-  { name: "top", label: "TOP", current: true },
-  { name: "best_buy", label: "Nejprodávanější", current: false },
-  { name: "price_asc", label: "Od nejlevnějšího", current: false },
-  { name: "price_desc", label: "Od nejdražšího", current: false },
+  { name: "top", label: "TOP" },
+  { name: "best_buy", label: "Nejprodávanější" },
+  { name: "price_asc", label: "Od nejlevnějšího" },
+  { name: "price_desc", label: "Od nejdražšího" },
 ];
 
 const ProductList = ({ products }) => {
-  const [productTabs, setTabs] = useState(tabs);
+  const [selected, setSelected] = useState(tabs[0]);
 
   return (
     <div>
       {/* tabs header - mobile */}
       <div className="sm:hidden">
-        <select
-          id="tabs"
-          name="tabs"
-          className="block w-full py-2 pl-3 pr-10 text-base rounded-md ring-sky-500 border-sky-500 focus:ring-sky-500 focus:border-sky-500 sm:text-sm"
-          defaultValue={productTabs.find((tab) => tab.current).label}
-        >
-          {productTabs.map((tab) => (
-            <option key={tab.name}>{tab.label}</option>
-          ))}
-        </select>
+        <Listbox className="block w-full" value={selected} onChange={setSelected}>
+          <div className="relative">
+            <Listbox.Button className="relative w-full py-2 pl-3 pr-10 border-2 border-sky-500 text-left bg-white rounded-lg cursor-pointer sm:text-sm">
+              <span className="block truncate">{selected.label}</span>
+              <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                <SelectorIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
+              </span>
+            </Listbox.Button>
+            <Transition
+              as={Fragment}
+              leave="transition ease-in duration-100"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <Listbox.Options className="absolute z-10 w-[93%] max-h-60 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                {tabs.map((tab, index) => (
+                  <Listbox.Option
+                    key={index}
+                    className={({ active }) =>
+                      classNames(
+                        active ? "text-sky-900 bg-sky-100" : "text-gray-900",
+                        "cursor-default select-none relative py-2 pl-10"
+                      )
+                    }
+                    value={tab}
+                  >
+                    {({ selected, active }) => (
+                      <>
+                        <span className={classNames(selected ? "font-medium" : "font-normal", "block truncate")}>
+                          {tab.label}
+                        </span>
+                        {selected ? (
+                          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-sky-600">
+                            <CheckIcon className="w-5 h-5" aria-hidden="true" />
+                          </span>
+                        ) : null}
+                      </>
+                    )}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </Transition>
+          </div>
+        </Listbox>
       </div>
 
       {/* tabs header - desktop */}
       <div className="hidden sm:block">
         <div className="border-b border-gray-200">
           <nav className="flex -mb-px space-x-8" aria-label="Tabs">
-            {productTabs.map((tab) => (
+            {tabs.map((tab) => (
               <div
                 key={tab.name}
                 className={classNames(
-                  tab.current
+                  tab.name === selected.name
                     ? "border-sky-500 text-sky-600"
                     : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
                   "whitespace-nowrap py-4 px-1 border-b-2 font-semibold transition hover:cursor-pointer"
                 )}
                 aria-current={tab.current ? "page" : undefined}
-                onClick={() => setTabs(productTabs.map((item) => ({ ...item, current: item.name === tab.name })))}
+                onClick={() => setSelected(tab)}
               >
                 {tab.label}
               </div>

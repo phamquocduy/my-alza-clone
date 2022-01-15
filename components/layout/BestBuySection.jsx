@@ -100,7 +100,7 @@ const BestBuySection = ({ products }) => {
 
                   <div className="flex flex-col h-56 px-4 py-2">
                     <div className="h-28">
-                      <h3 className="text-sm font-medium text-center">
+                      <h3 className="text-sm font-medium">
                         <a
                           className="text-sm font-bold text-sky-900 hover:underline"
                           href={product.url}
