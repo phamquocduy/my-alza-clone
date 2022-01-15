@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
-import classNames from "../../utils/classNames";
+import classNames from "../../../utils/classNames";
 
 const items = [
   { name: "Koupit zrychleně", href: "#", img: "fast-forward.png" },
@@ -11,7 +11,7 @@ const items = [
   { name: "Přidat do seznamu", href: "#", img: "check-list.png" },
 ];
 
-const DropdownButton = () => {
+const BuyDropdownButton = () => {
   return (
     <div className="relative z-10 inline-flex rounded-md shadow-sm">
       <button
@@ -60,4 +60,4 @@ const DropdownButton = () => {
   );
 };
 
-export default DropdownButton;
+export default BuyDropdownButton;
