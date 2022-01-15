@@ -7,7 +7,7 @@ const ProductTilePrices = ({ order, priceInfo, miniVersion }) => {
   // random rule
   let pricesWrapperCls = classNames(
     order && order > 20 ? "bg-yellow-200" : "bg-transparent",
-    "h-16 px-1 m-2 flex flex-row justify-between items-center"
+    "h-16 p-2 flex flex-row justify-between items-center"
   );
 
   return (

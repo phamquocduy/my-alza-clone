@@ -23,7 +23,6 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-gray-400 hover:text-gray-500"
           >
-            <span className="sr-only">{item.name}</span>
             <img src={item.img} alt={item.name} className="w-6 h-6" />
           </a>
         ))}
