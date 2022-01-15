@@ -6,6 +6,8 @@ import CategoryList from "../components/layout/CategoryList";
 import BestBuySection from "../components/layout/BestBuySection";
 import ProductList from "../components/layout/ProductList";
 
+import Footer from "../components/layout/Footer";
+
 const Index = ({ productData }) => {
   return (
     <div className="bg-gradient-to-b from-white via-blue-200 to-blue-200">
@@ -28,6 +30,8 @@ const Index = ({ productData }) => {
 
         <ProductList products={productData} />
       </main>
+
+      <Footer />
     </div>
   );
 };
