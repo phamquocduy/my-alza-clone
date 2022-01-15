@@ -10,7 +10,7 @@ import Footer from "../components/layout/Footer";
 
 const Index = ({ productData }) => {
   return (
-    <div className="bg-gradient-to-b from-white via-blue-200 to-blue-200">
+    <div className="bg-gradient-to-b from-white via-sky-200 to-sky-200">
       <Head>
         <title>Alza clone</title>
         <meta name="description" content="My Alza.cz clone" />
