@@ -3,7 +3,7 @@ import { Navigation, Pagination } from "swiper";
 import { SwiperSlide } from "swiper/react";
 
 import { StarIcon } from "@heroicons/react/solid";
-import { HeartIcon, ShareIcon, ShoppingCartIcon } from "@heroicons/react/outline";
+import { HeartIcon, ShareIcon } from "@heroicons/react/outline";
 
 // turn-off ssr to fix hydration error caused by Swiper
 const Swiper = dynamic(() => import("swiper/react").then((mod) => mod.Swiper), {
@@ -136,9 +136,13 @@ const BestBuySection = ({ products }) => {
 
                       <button
                         type="button"
-                        className="inline-flex items-center px-2 py-1 font-medium leading-4 bg-white border rounded-md shadow-sm group border-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-0"
+                        className="inline-flex items-center px-2 py-1 font-medium leading-4 bg-white rounded-md shadow-md group hover:bg-sky-600 focus:outline-none focus:ring-0"
                       >
-                        <ShoppingCartIcon className="w-5 h-5 group-hover:text-white text-sky-600" aria-hidden="true" />
+                        <img
+                          src="/images/cart.png"
+                          className="group-hover:text-white w-6 h-6 mr-0.5"
+                          aria-hidden="true"
+                        />
                       </button>
                     </div>
                   </div>
