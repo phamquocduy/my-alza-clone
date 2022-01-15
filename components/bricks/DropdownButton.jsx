@@ -1,28 +1,30 @@
+import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useEffect, useRef, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import { ShoppingCartIcon, FastForwardIcon, ScaleIcon, BellIcon, DocumentAddIcon } from "@heroicons/react/outline";
 
 import classNames from "../../utils/classNames";
 
 const items = [
-  { name: "Koupit zrychleně", href: "#" },
-  { name: "Porovnat", href: "#" },
-  { name: "Hlídat", href: "#" },
-  { name: "Přidat do seznamu", href: "#" },
+  { name: "Koupit zrychleně", href: "#", icon: FastForwardIcon },
+  { name: "Porovnat", href: "#", icon: ScaleIcon },
+  { name: "Hlídat", href: "#", icon: BellIcon },
+  { name: "Přidat do seznamu", href: "#", icon: DocumentAddIcon },
 ];
 
 const DropdownButton = () => {
   return (
-    <div className="relative z-0 inline-flex shadow-sm rounded-md">
+    <div className="relative z-10 inline-flex rounded-md shadow-sm">
       <button
         type="button"
-        className="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-0"
+        className="inline-flex items-center px-2 py-1 text-sm font-medium leading-4 text-white border border-transparent shadow-sm rounded-l-md bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-0"
       >
+        <ShoppingCartIcon className="w-5 h-5 mr-2 -ml-0.5" aria-hidden="true" />
         Koupit
       </button>
-      <Menu as="span" className="-ml-px relative block">
-        <Menu.Button className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-0">
-          <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
+      <Menu as="span" className="relative z-10 block -ml-0.5">
+        <Menu.Button className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-white border border-transparent shadow-sm border-l-white rounded-r-md bg-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-0">
+          <ChevronDownIcon className="w-5 h-5" aria-hidden="true" />
         </Menu.Button>
         <Transition
           as={Fragment}
@@ -33,24 +35,25 @@ const DropdownButton = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="py-1">
-              {items.map((item) => (
-                <Menu.Item key={item.name}>
-                  {({ active }) => (
-                    <a
-                      href={item.href}
-                      className={classNames(
-                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-4 py-2 text-sm"
-                      )}
-                    >
-                      {item.name}
-                    </a>
-                  )}
-                </Menu.Item>
-              ))}
-            </div>
+          <Menu.Items className="absolute right-0 z-20 py-1 mt-1 origin-top-right bg-white rounded-md shadow-lg w-44 ring-1 ring-gray-900 ring-opacity-5 focus:outline-none">
+            {items.map(({ name, icon: ItemIcon, href }) => (
+              <Menu.Item key={name}>
+                {({ active }) => (
+                  <a
+                    href={href}
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    <div className="flex items-center">
+                      {<ItemIcon className="w-5 h-5 mr-2 -ml-0.5" aria-hidden="true" />}
+                      {name}
+                    </div>
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
           </Menu.Items>
         </Transition>
       </Menu>

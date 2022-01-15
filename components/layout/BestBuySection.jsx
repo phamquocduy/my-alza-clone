@@ -3,7 +3,7 @@ import { Navigation, Pagination } from "swiper";
 import { SwiperSlide } from "swiper/react";
 
 import { StarIcon } from "@heroicons/react/solid";
-import { HeartIcon, ScaleIcon } from "@heroicons/react/outline";
+import { HeartIcon, ShareIcon, ShoppingCartIcon } from "@heroicons/react/outline";
 
 // turn-off ssr to fix hydration error caused by Swiper
 const Swiper = dynamic(() => import("swiper/react").then((mod) => mod.Swiper), {
@@ -17,7 +17,7 @@ const BestBuySection = ({ products }) => {
     <div className="my-4">
       <h2 className="text-xl font-bold text-gray-900">Nejprodávanější</h2>
 
-      <div className="mt-6 flex">
+      <div className="flex mt-6">
         <Swiper
           modules={[Navigation, Pagination]}
           slidesPerView={1}
@@ -36,17 +36,17 @@ const BestBuySection = ({ products }) => {
 
             return (
               <SwiperSlide key={product.id} className="flex flex-col items-center">
-                <div key={product.id} className="relative bg-white flex flex-col overflow-hidden pb-2">
+                <div className="relative flex flex-col pb-2 bg-white">
                   <a
                     href={product.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="aspect-w-3 aspect-h-4 hover:opacity-75 sm:aspect-none h-72 sm:h-56 p-2"
+                    className="p-2 aspect-w-3 aspect-h-4 hover:opacity-75 sm:aspect-none h-72 sm:h-56"
                   >
                     <img
                       src={product.img}
                       alt={product.spec}
-                      className="w-full h-full object-center object-cover sm:w-full sm:h-full"
+                      className="object-cover object-center w-full h-full sm:w-full sm:h-full"
                     />
                   </a>
 
@@ -68,18 +68,8 @@ const BestBuySection = ({ products }) => {
                   </div>
 
                   {/* rating */}
-                  <div className="px-3 pt-2 xl:col-span-1 flex justify-between">
+                  <div className="flex justify-between px-3 pt-2 xl:col-span-1">
                     <div className="text-left">
-                      <button
-                        type="button"
-                        className="inline-flex items-center p-1 gap-2 border border-transparent rounded-full focus:outline-none focus:ring-0"
-                      >
-                        <HeartIcon className="h-5 w-5 text-red-200 hover:text-red-500" aria-hidden="true" />
-                        <ScaleIcon className="h-5 w-5 text-sky-200 hover:text-sky-500" aria-hidden="true" />
-                      </button>
-                    </div>
-
-                    <div className="text-right">
                       <div
                         className={classNames(
                           roundedRating > 3 ? "bg-yellow-50 text-yellow-800" : "bg-gray-50 text-gray-800",
@@ -96,13 +86,23 @@ const BestBuySection = ({ products }) => {
                         {roundedRating}/5
                       </div>
                     </div>
+
+                    <div className="text-right">
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-2 p-1 border border-transparent rounded-full focus:outline-none focus:ring-0"
+                      >
+                        <HeartIcon className="w-5 h-5 text-red-200 hover:text-red-500" aria-hidden="true" />
+                        <ShareIcon className="w-5 h-5 text-sky-200 hover:text-sky-500" aria-hidden="true" />
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="h-56 px-4 py-2 flex flex-col">
+                  <div className="flex flex-col h-56 px-4 py-2">
                     <div className="h-28">
                       <h3 className="text-sm font-medium text-center">
                         <a
-                          className="text-sm text-sky-900 font-bold hover:underline"
+                          className="text-sm font-bold text-sky-900 hover:underline"
                           href={product.url}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -112,9 +112,9 @@ const BestBuySection = ({ products }) => {
                       </h3>
 
                       {/* promo */}
-                      <div className="mt-4 flex flex-row justify-between">
-                        <span className="text-red-600 text-xs font-bold whitespace-nowrap">+ ZDARMA</span>
-                        <span className="ml-6 px-1 text-gray-500 text-xs font-bold whitespace-pre-line">
+                      <div className="flex flex-row justify-between mt-4">
+                        <span className="text-xs font-bold text-red-600 whitespace-nowrap">+ ZDARMA</span>
+                        <span className="px-1 ml-6 text-xs font-bold text-gray-500 whitespace-pre-line">
                           Elektronická licence
                         </span>
                       </div>
@@ -124,15 +124,22 @@ const BestBuySection = ({ products }) => {
                     <div
                       className={classNames(
                         product.order && product.order > 20 ? "bg-yellow-200" : "bg-transparent", // random rule
-                        "h-16 flex flex-row justify-between items-center px-2"
+                        "h-16 flex flex-row justify-between items-center px-1"
                       )}
                     >
                       <div>
-                        <div className="text-red-500 text-lg font-semibold">{product.priceInfo.priceWithVat},-</div>
+                        <div className="text-lg font-semibold text-red-500">{product.priceInfo.priceWithVat},-</div>
                         <div className="text-xs">
                           bez DPH <span className="font-bold">{product.priceInfo.priceWithoutVat},-</span>
                         </div>
                       </div>
+
+                      <button
+                        type="button"
+                        className="inline-flex items-center px-2 py-1 font-medium leading-4 bg-white border rounded-md shadow-sm group border-sky-600 hover:bg-sky-700 focus:outline-none focus:ring-0"
+                      >
+                        <ShoppingCartIcon className="w-5 h-5 group-hover:text-white text-sky-600" aria-hidden="true" />
+                      </button>
                     </div>
                   </div>
                 </div>
