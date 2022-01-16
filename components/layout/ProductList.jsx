@@ -22,7 +22,7 @@ const tabs = [
   { name: "price_desc", label: "Od nejdražšího" },
 ];
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products = [] }) => {
   const [selected, setSelected] = useState(tabs[0]);
 
   function scrollToTop() {

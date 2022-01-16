@@ -9,7 +9,7 @@ const Swiper = dynamic(() => import("swiper/react").then((mod) => mod.Swiper), {
   ssr: false,
 });
 
-const BestBuySection = ({ products }) => {
+const BestBuySection = ({ products = [] }) => {
   return (
     <div className="my-4">
       <h2 className="text-xl font-bold text-gray-900">Nejprodávanější</h2>

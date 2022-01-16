@@ -8,7 +8,7 @@ import ProductList from "../components/layout/ProductList";
 
 import Footer from "../components/layout/Footer";
 
-const Index = ({ productData }) => {
+const Index = ({ productData = [] }) => {
   return (
     <div className="bg-gradient-to-b from-white via-sky-200 to-sky-200">
       <Head>
