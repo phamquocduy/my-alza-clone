@@ -67,7 +67,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      productData: result.data,
+      productData: result ? result.data : [],
     },
   };
 }
