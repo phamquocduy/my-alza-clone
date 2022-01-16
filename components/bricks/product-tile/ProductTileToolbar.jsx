@@ -13,7 +13,7 @@ const ProductTileToolbar = ({ rating }) => {
         <div
           className={classNames(
             roundedRating > 3 ? "bg-yellow-50 text-yellow-800" : "bg-gray-50 text-gray-800",
-            "inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0"
+            "inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-semibold md:mt-2 lg:mt-0"
           )}
         >
           <StarIcon

@@ -1,6 +1,7 @@
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import {
+  ArrowUpIcon,
   CheckIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -24,8 +25,13 @@ const tabs = [
 const ProductList = ({ products }) => {
   const [selected, setSelected] = useState(tabs[0]);
 
+  function scrollToTop() {
+    // this changes the scrolling behavior to "smooth"
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
-    <div>
+    <div className="relative">
       {/* tabs header - mobile */}
       <div className="md:hidden flex justify-between">
         <Listbox className="block w-1/2" value={selected} onChange={setSelected}>
@@ -114,12 +120,21 @@ const ProductList = ({ products }) => {
 
       {/* tabs pagination */}
       <div className="bg-white py-2 flex items-center justify-between border-t border-gray-200">
-        <div>
-          <p className="text-sm text-gray-700">
+        <div className="flex justify-between">
+          <button
+            className="py-2 ml-4 h-6 w-6 rounded-full flex justify-center items-center bg-sky-500 focus:outline-none focus:ring-0"
+            onClick={scrollToTop}
+          >
+            <ArrowUpIcon className="h-4 w-4 text-white" aria-hidden="true" />
+          </button>
+          <span className="hidden md:block ml-2">Nahoru</span>
+        </div>
+
+        <div className="flex items-center">
+          <p className="mr-5 text-sm text-gray-700">
             Celkem <span className="font-bold">{products.length}</span> položek
           </p>
-        </div>
-        <div>
+
           <nav className="z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
             <button className="inline-flex items-center p-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-sky-600 hover:text-white">
               <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />

@@ -39,14 +39,14 @@ const ProductTileAvailability = ({ avail, maxCanBuy }) => {
 
           <div className="relative flex space-x-2">
             <div>
-              <span className="h-6 w-6 rounded-full flex items-center justify-center bg-sky-500">
+              <span className="h-6 w-6 rounded-full flex items-center justify-center bg-green-500">
                 <ThumbUpIcon className="h-4 w-4 text-white" aria-hidden="true" />
               </span>
             </div>
             <div className="min-w-0 mt-0.5 flex-1 flex justify-between space-x-4">
               <div>
-                <p className="text-sm text-gray-500">
-                  Můžete mít zítra od <span className="font-bold whitespace-nowrap text-gray-500">8:00</span>
+                <p className="text-sm font-medium text-green-500">
+                  Můžete mít zítra od <span className="font-bold whitespace-nowrap text-green-500">8:00</span>
                 </p>
               </div>
             </div>
